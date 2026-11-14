@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/yicanyang142-del/sales-visit-review-skill/blob/main/schemas/visit-review.schema.json",
+  "title": "Sales Visit Review",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["summary", "customer_feedback", "todo_list", "strategy_adjustment", "self_reflection"],
+  "properties": {
+    "summary": { "type": "string", "minLength": 1 },
+    "customer_feedback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pain_points", "budget", "decision_chain", "concerns"],
+      "properties": {
+        "pain_points": { "type": "array", "items": { "type": "string" } },
+        "budget": { "type": "string", "minLength": 1 },
+        "decision_chain": { "type": "array", "items": { "type": "string" } },
+        "concerns": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "todo_list": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["action", "suggested_time"],
+        "properties": {
+          "action": { "type": "string", "minLength": 1 },
+          "suggested_time": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "strategy_adjustment": { "type": "string", "minLength": 1 },
+    "self_reflection": { "type": "string", "minLength": 1 }
+  }
+}
